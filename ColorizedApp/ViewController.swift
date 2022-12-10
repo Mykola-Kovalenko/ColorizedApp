@@ -12,9 +12,7 @@ class ViewController: UIViewController {
     @IBOutlet var mainView: UIView!
     
     @IBOutlet var redColourIndex: UILabel!
-    
     @IBOutlet var greenColourIndex: UILabel!
-    
     @IBOutlet var blueColourIndex: UILabel!
     
     @IBOutlet var redColourSlider: UISlider!
@@ -41,7 +39,12 @@ class ViewController: UIViewController {
         redColourIndex.text = String(redColourSlider.value)
         greenColourIndex.text = String(greenColourSlider.value)
         blueColourIndex.text = String(blueColourSlider.value)
-        mainView.backgroundColor = UIColor(red: CGFloat(redColourSlider.value), green: CGFloat(greenColourSlider.value), blue: CGFloat(blueColourSlider.value), alpha: CGFloat(1.0))
+        mainView.backgroundColor = UIColor(
+            red: CGFloat(redColourSlider.value),
+            green: CGFloat(greenColourSlider.value),
+            blue: CGFloat(blueColourSlider.value),
+            alpha: CGFloat(1.0)
+        )
     }
     //MARK: private function
     private func setupSlidersLabel() {
