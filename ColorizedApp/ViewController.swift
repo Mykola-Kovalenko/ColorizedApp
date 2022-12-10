@@ -24,17 +24,15 @@ class ViewController: UIViewController {
         mainView.layer.cornerRadius = 30
         setupSlidersLabel()
         setupSlider()
+        mainView.backgroundColor = UIColor(
+            red: CGFloat(redColourSlider.value),
+            green: CGFloat(greenColourSlider.value),
+            blue: CGFloat(blueColourSlider.value),
+            alpha: CGFloat(1.0)
+            )
         // Do any additional setup after loading the view.
     }
     
-    @IBAction func redSliderAction(_ sender: UISlider) {
-    }
-    
-    @IBAction func greenSliderAction(_ sender: UISlider) {
-    }
-    
-    @IBAction func blueSliderAction(_ sender: UISlider) {
-    }
     @IBAction func changeBackgroundColour(_ sender: UISlider) {
         redColourIndex.text = String(redColourSlider.value)
         greenColourIndex.text = String(greenColourSlider.value)
@@ -44,13 +42,14 @@ class ViewController: UIViewController {
             green: CGFloat(greenColourSlider.value),
             blue: CGFloat(blueColourSlider.value),
             alpha: CGFloat(1.0)
-        )
+            )
+    
     }
     //MARK: private function
     private func setupSlidersLabel() {
-        redColourIndex.text = String(redColourSlider.value)
-        greenColourIndex.text = String(greenColourSlider.value)
-        blueColourIndex.text = String(blueColourSlider.value)
+        redColourIndex.text = String(format: "%.2F", redColourSlider.value)
+        greenColourIndex.text = String(format: "%.2F", greenColourSlider.value)
+        blueColourIndex.text = String(format: "%.2F", blueColourSlider.value)
     }
     private func setupSlider() {
         redColourSlider.minimumTrackTintColor = .red
