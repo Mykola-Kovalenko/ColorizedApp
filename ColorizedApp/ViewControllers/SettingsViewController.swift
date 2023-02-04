@@ -98,34 +98,29 @@ class SettingsViewController: UIViewController {
             alpha: CGFloat(1.0)
         )
     }
-   }
+
+}
 
 extension SettingsViewController: UITextFieldDelegate {
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         guard let newValue = textField.text else { return }
         guard let numberValue = Float(newValue) else { return }
-        
-        
         switch textField {
         case redLabelTextField:
             redColourSlider.setValue(numberValue , animated: true)
-//            setupSlidersLabel(for: redColourIndex)
+            setupSlidersLabel(for: redColourIndex)
             setupSlidersText(for: redLabelTextField)
         case greenLabelTextField:
             greenColourSlider.setValue(numberValue, animated: true)
-//            setupSlidersLabel(for: greenColourIndex)
+            setupSlidersLabel(for: greenColourIndex)
             setupSlidersText(for: greenLabelTextField)
         default:
             blueColourSlider.setValue(numberValue, animated: true)
-//            setupSlidersLabel(for: blueColourIndex)
+            setupSlidersLabel(for: blueColourIndex)
             setupSlidersText(for: blueLabelTextField)
         }
+        setColor()
+        return
     }
-    
 }
-//Сделайте текстовые поля, в которых можно задавать значение цвета с цифровой экранной клавиатуры. Свяжите клавиатуру с тулбаром и разместите в нем кнопку Done. По нажтию на кнопку клавиатура должна скрываться. Так же сделайте возможность скрывать клавиатуру тапом по экрану.
-//
-//Для работы с текстовыми полями подпишите класс под протокол UITextFieldDelegate и реализуйте метод протокола textFieldDidEndEditing(_ textField: UITextField) для передачи вносимых текстовых значений в лейблы и слайдеры. Так же не забудьте инициализировать делегатов для текстовых полей: textField.delegate = self. Это необходимо сделать в методе viewDidLoad.
-//
-//Значения слайдеров должны передаваться одновременно в лейблы и текстовые поля. Значения, вносимые в текстовые поля должны передаваться одновременно в слайдеры и в лейблы.
