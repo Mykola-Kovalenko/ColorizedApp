@@ -32,16 +32,17 @@ class SettingsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       
         setupSlider()
         setColor()
-    
+        
+        setupSlidersLabel(for: redColourIndex, greenColourIndex, blueColourIndex)
+        setupSlidersText(for: redLabelTextField, greenLabelTextField, blueLabelTextField)
+        
         redLabelTextField.delegate = self
         greenLabelTextField.delegate = self
         blueLabelTextField.delegate = self
         
-        setupSlidersLabel(for: redColourIndex, greenColourIndex, blueColourIndex)
-        setupSlidersText(for: redLabelTextField, greenLabelTextField, blueLabelTextField)
+        
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -49,7 +50,7 @@ class SettingsViewController: UIViewController {
         view.endEditing(true)
     }
     
-    
+    // MARK: - IBActions
     @IBAction func changeBackgroundColour(_ sender: UISlider) {
         switch sender {
         case redColourSlider:
@@ -63,30 +64,25 @@ class SettingsViewController: UIViewController {
             setupSlidersText(for: blueLabelTextField)
         }
         setColor()
-        setupSlidersText(for: redLabelTextField, greenLabelTextField, blueLabelTextField)
     }
     
     @IBAction func doneButtonPressed() {
-          
         delegate?.setColor(mainView.backgroundColor ?? .white)
-          dismiss(animated: true)
-
+        dismiss(animated: true)
     }
-    //MARK: private function
-    private func setupSlidersLabel(for _: UILabel...) {
-                redColourIndex.text = String(format: "%.2F", redColourSlider.value)
-                greenColourIndex.text = String(format: "%.2F", greenColourSlider.value)
-                blueColourIndex.text = String(format: "%.2F", blueColourSlider.value)
-            }
-            
-        
-    private func setupSlidersText(for _: UITextField...) {
-                redLabelTextField.text = String(format: "%.2F", redColourSlider.value)
-                greenLabelTextField.text = String(format: "%.2F", greenColourSlider.value)
-                blueLabelTextField.text = String(format: "%.2F", blueColourSlider.value)
-            }
     
-   
+    // MARK: private function
+    private func setupSlidersLabel(for _: UILabel...) {
+        redColourIndex.text = String(format: "%.2F", redColourSlider.value)
+        greenColourIndex.text = String(format: "%.2F", greenColourSlider.value)
+        blueColourIndex.text = String(format: "%.2F", blueColourSlider.value)
+    }
+    
+    private func setupSlidersText(for _: UITextField...) {
+        redLabelTextField.text = String(format: "%.2F", redColourSlider.value)
+        greenLabelTextField.text = String(format: "%.2F", greenColourSlider.value)
+        blueLabelTextField.text = String(format: "%.2F", blueColourSlider.value)
+    }
     
     private func setupSlider() {
         redColourSlider.minimumTrackTintColor = .red
@@ -102,23 +98,7 @@ class SettingsViewController: UIViewController {
             alpha: CGFloat(1.0)
         )
     }
-    
-    @objc private func didTapDone() {
-        view.endEditing(true)
-    }
-    
-    private func showAlert(title: String, message: String) {
-        let alert = UIAlertController(
-            title: title,
-            message: message,
-            preferredStyle: .alert
-        )
-        let okAction = UIAlertAction(title: "OK", style: .default)
-        alert.addAction(okAction)
-        present(alert, animated: true)
-    }
-}
-
+   }
 
 extension SettingsViewController: UITextFieldDelegate {
     
@@ -126,14 +106,23 @@ extension SettingsViewController: UITextFieldDelegate {
         guard let newValue = textField.text else { return }
         guard let numberValue = Float(newValue) else { return }
         
-        if textField == redLabelTextField {
-            redColourSlider.value = numberValue
-        } else if textField == greenLabelTextField {
-            greenColourSlider.value = numberValue
-        } else {
-            blueColourSlider.value = numberValue
+        
+        switch textField {
+        case redLabelTextField:
+            redColourSlider.setValue(numberValue , animated: true)
+//            setupSlidersLabel(for: redColourIndex)
+            setupSlidersText(for: redLabelTextField)
+        case greenLabelTextField:
+            greenColourSlider.setValue(numberValue, animated: true)
+//            setupSlidersLabel(for: greenColourIndex)
+            setupSlidersText(for: greenLabelTextField)
+        default:
+            blueColourSlider.setValue(numberValue, animated: true)
+//            setupSlidersLabel(for: blueColourIndex)
+            setupSlidersText(for: blueLabelTextField)
         }
     }
+    
 }
 //Сделайте текстовые поля, в которых можно задавать значение цвета с цифровой экранной клавиатуры. Свяжите клавиатуру с тулбаром и разместите в нем кнопку Done. По нажтию на кнопку клавиатура должна скрываться. Так же сделайте возможность скрывать клавиатуру тапом по экрану.
 //
