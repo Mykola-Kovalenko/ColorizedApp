@@ -121,6 +121,5 @@ extension SettingsViewController: UITextFieldDelegate {
             setupSlidersText(for: blueLabelTextField)
         }
         setColor()
-        return
     }
 }
