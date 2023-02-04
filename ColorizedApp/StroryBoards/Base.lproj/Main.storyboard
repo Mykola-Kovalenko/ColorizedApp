@@ -8,19 +8,19 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Main View Controller-->
         <scene sceneID="gBX-G6-9iM">
             <objects>
-                <viewController id="ZEa-jd-FGo" sceneMemberID="viewController">
+                <viewController id="ZEa-jd-FGo" customClass="MainViewController" customModule="ColorizedApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="owz-Hb-JK2">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XLi-KI-ybP">
-                                <rect key="frame" x="318" y="59" width="75" height="35"/>
+                                <rect key="frame" x="332" y="59" width="49" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" image="square.and.arrow.up" catalog="system"/>
                                 <connections>
                                     <segue destination="BYZ-38-t0r" kind="show" id="CuR-Hs-vHF"/>
                                 </connections>
@@ -146,16 +146,28 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Ut-qY-lMa">
+                                <rect key="frame" x="143" y="680.66666666666663" width="107" height="34.333333333333371"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Done"/>
+                                <connections>
+                                    <action selector="doneButtonPressed" destination="BYZ-38-t0r" eventType="touchUpInside" id="AXO-eY-OyJ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemGray3Color"/>
                         <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="4Ut-qY-lMa" secondAttribute="bottom" constant="103" id="6Ub-AG-yiE"/>
                             <constraint firstItem="Bn8-dv-xT2" firstAttribute="top" secondItem="c9t-FM-klC" secondAttribute="bottom" constant="46" id="8j8-PT-J2U"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Bn8-dv-xT2" secondAttribute="bottom" constant="454" id="Hbe-g9-wpJ"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Bn8-dv-xT2" secondAttribute="trailing" constant="20" id="JQm-Ya-lnr"/>
                             <constraint firstItem="Bn8-dv-xT2" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="NeE-So-06M"/>
+                            <constraint firstItem="4Ut-qY-lMa" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="143" id="SFa-XK-bn5"/>
                             <constraint firstItem="c9t-FM-klC" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="XKk-kK-ccm"/>
                             <constraint firstItem="c9t-FM-klC" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="30" id="kwV-Kv-3ZZ"/>
+                            <constraint firstItem="4Ut-qY-lMa" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="143" id="n7b-Ng-84i"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="4Ut-qY-lMa" secondAttribute="trailing" constant="143" id="qsb-fC-oiw"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="c9t-FM-klC" secondAttribute="trailing" constant="20" id="yH0-8h-IkR"/>
                         </constraints>
                     </view>
@@ -179,6 +191,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="square.and.arrow.up" catalog="system" width="115" height="128"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
